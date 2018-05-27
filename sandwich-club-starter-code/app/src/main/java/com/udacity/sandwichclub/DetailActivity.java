@@ -20,6 +20,16 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    ImageView mImageView;
+    TextView mOriginTv;
+    TextView mAlsoKnownAsTvHeading;
+    TextView mIngredientsTvHeading;
+    TextView mPlaceOfOriginTvHeading;
+    TextView mDescriptionTv;
+    TextView mIngredientsTv;
+    TextView mAlsoKnownAsTv;
+    TextView mDescriptionTvHeading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +58,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
@@ -61,7 +71,15 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
-
+    private void populateUI(Sandwich sandwich) {
+        mImageView = (ImageView) findViewById(R.id.image_iv);
+        mOriginTv = (TextView) findViewById(R.id.origin_tv);
+        mAlsoKnownAsTvHeading = (TextView) findViewById(R.id.also_known_tv_heading);
+        mIngredientsTvHeading = (TextView) findViewById(R.id.ingredients_tv_heading);
+        mPlaceOfOriginTvHeading = (TextView) findViewById(R.id.place_of_origin_tv_heading);
+        mDescriptionTv = (TextView) findViewById(R.id.description_tv);
+        mIngredientsTv = (TextView) findViewById(R.id.ingredients_tv);
+        mAlsoKnownAsTv = (TextView) findViewById(R.id.also_known_tv);
+        mDescriptionTvHeading = (TextView) findViewById(R.id.description_tv_heading);
     }
 }
