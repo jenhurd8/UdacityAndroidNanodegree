@@ -24,12 +24,16 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    TextView mOriginTextView;
+    TextView mIngredientsTv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
+        mOriginTextView = findViewById(R.id.origin_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -59,6 +63,8 @@ public class DetailActivity extends AppCompatActivity {
 
         setTitle(sandwich.getMainName());
 
+
+
     }
 
     private void closeOnError() {
@@ -67,6 +73,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI() {
-
+        mOriginTextView =  findViewById(R.id.origin_tv);
+        mIngredientsTv = findViewById(R.id.ingredients_tv);
     }
 }

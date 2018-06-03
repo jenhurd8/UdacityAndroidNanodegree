@@ -21,14 +21,16 @@ public class JsonUtils {
 //        }
 
        Sandwich sandwich = new Sandwich();
+       String placeOfOriginL;
+       String setDescriptionL;
 
        try {
-
 
            JSONObject jsonSandwichString = new JSONObject(json);
 
            String imageLink = jsonSandwichString.getString("image");
            sandwich.setImage(imageLink);
+
            sandwich.setMainName(jsonSandwichString.getJSONObject("name").getString("mainName"));
 
            ArrayList<String> alsoKnownAsArray = new ArrayList<>();
@@ -36,14 +38,13 @@ public class JsonUtils {
            for(int i=0; i<alsoKnownAsJsonArray.length();i++){
                alsoKnownAsArray.add(alsoKnownAsJsonArray.getString(i));
            }
-
            sandwich.setAlsoKnownAs(alsoKnownAsArray);
 
-//           placeOfOrigin = jsonSandwichString.getString("placeOfOrigin");
-//           sandwich.setPlaceOfOrigin(placeOfOrigin);
-//
-//           setDescription = jsonSandwichString.getString("description");
-//           sandwich.setDescription(setDescription);
+           placeOfOriginL = jsonSandwichString.getString("placeOfOrigin");
+           sandwich.setPlaceOfOrigin(jsonSandwichString.getString(placeOfOriginL));
+
+           setDescriptionL = jsonSandwichString.getString("description");
+           sandwich.setDescription(setDescriptionL);
 
            ArrayList<String> ingredientsArray = new ArrayList<>();
            JSONArray ingredientsJsonArray = jsonSandwichString.getJSONArray("alsoKnownAs");
